@@ -1,6 +1,8 @@
-package com.worldline.interview;
+package com.worldline.interview.engine;
 
-public class InternalCombustionEngine {
+import com.worldline.interview.enums.FuelType;
+
+public class InternalCombustionEngine implements Engine {
 
     private boolean running;
     private int fuelLevel;
@@ -13,6 +15,7 @@ public class InternalCombustionEngine {
         fuelLevel = 0;
     }
 
+    @Override
     public void start() {
         if (fuelLevel > 0 && requiredFuelType.equals(fuelType)) {
             running = true;
@@ -21,14 +24,17 @@ public class InternalCombustionEngine {
         }
     }
 
+    @Override
     public void stop() {
         running = false;
     }
 
+    @Override
     public boolean isRunning() {
         return running;
     }
 
+    @Override
     public void fill(FuelType fuelType, int fuelLevel) {
         if (fuelLevel >= 0 && fuelLevel <= 100) {
             this.fuelLevel = fuelLevel;
@@ -43,7 +49,18 @@ public class InternalCombustionEngine {
         this.fuelType = fuelType;
     }
 
+    @Override
     public FuelType getFuelType() {
         return  requiredFuelType;
+    }
+
+    @Override
+    public int getFuelLevel() {
+        return fuelLevel;
+    }
+
+    @Override
+    public FuelType getRequiredFuelType() {
+        return requiredFuelType;
     }
 }
