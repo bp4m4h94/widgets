@@ -2,10 +2,8 @@ package com.worldline.interview.machine;
 
 import com.worldline.interview.engine.Engine;
 import com.worldline.interview.engine.SteamEngine;
-import com.worldline.interview.enums.FuelType;
 
 public class WidgetMachineSteam extends WidgetMachine {
-
 
     public WidgetMachineSteam(SteamEngine engine) {
         super(engine);

@@ -2,7 +2,6 @@ package com.worldline.interview.machine;
 
 import com.worldline.interview.engine.Engine;
 import com.worldline.interview.engine.InternalCombustionEngine;
-import com.worldline.interview.enums.FuelType;
 
 public class WidgetMachineInternal extends WidgetMachine {
 
