@@ -26,17 +26,9 @@ public class WidgetMachineInternal extends WidgetMachine {
     private double produce(int quantity) {
         int batch = 0;
         int batchCount = 0;
-        double costPerBatch = 0;
+        double costPerBatch;
 
-        if (engine.getFuelType() == FuelType.PETROL) {
-            costPerBatch = 9;
-        } else if (engine.getFuelType() == FuelType.DIESEL) {
-            costPerBatch = 12;
-        } else if (engine.getFuelType() == FuelType.WOOD) {
-            costPerBatch = 5.65;
-        } else if (engine.getFuelType() == FuelType.COAL) {
-            costPerBatch = 4.35;
-        }
+        costPerBatch = engine.getFuelType().getCostPerBatch();
 
         while (batch < quantity) {
             batch = batch + 8;
