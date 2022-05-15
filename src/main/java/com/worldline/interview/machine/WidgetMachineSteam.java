@@ -27,16 +27,13 @@ public class WidgetMachineSteam extends WidgetMachine {
     private double produce(int quantity) {
         int batch = 0;
         int batchCount = 0;
-        double costPerBatch;
-
-        costPerBatch = engine.getFuelType().getCostPerBatch();
 
         while (batch < quantity) {
             batch = batch + 2;
             batchCount++;
         }
 
-        return batchCount * costPerBatch;
+        return batchCount * engine.getFuelType().getCostPerBatch();
     }
 
     public Engine getEngine() {
