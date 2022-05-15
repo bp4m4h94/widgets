@@ -2,6 +2,8 @@ package com.worldline.interview.engine;
 
 import com.worldline.interview.enums.FuelType;
 
+import java.util.List;
+
 public interface Engine {
 
     void start();
@@ -16,6 +18,6 @@ public interface Engine {
 
     int getFuelLevel();
 
-    FuelType getRequiredFuelType();
+    List<FuelType> getRequiredFuelType();
 
 }

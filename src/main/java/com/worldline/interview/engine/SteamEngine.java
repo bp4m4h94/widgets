@@ -2,14 +2,16 @@ package com.worldline.interview.engine;
 
 import com.worldline.interview.enums.FuelType;
 
+import java.util.List;
+
 public class SteamEngine implements Engine {
 
     private boolean running;
     private int fuelLevel;
-    private final FuelType requiredFuelType;
+    private final List<FuelType> requiredFuelType;
     private FuelType fuelType;
 
-    public SteamEngine(FuelType requiredFuelType) {
+    public SteamEngine(List<FuelType> requiredFuelType) {
         this.requiredFuelType = requiredFuelType;
         running = false;
         fuelLevel = 0;
@@ -17,7 +19,7 @@ public class SteamEngine implements Engine {
 
     @Override
     public void start() {
-        if (fuelLevel > 0 && requiredFuelType.equals(fuelType)) {
+        if (fuelLevel > 0 && requiredFuelType.contains(fuelType)) {
             running = true;
         } else {
             throw new IllegalStateException("Not able to start engine.");
@@ -42,7 +44,7 @@ public class SteamEngine implements Engine {
 
     @Override
     public FuelType getFuelType() {
-        return requiredFuelType;
+        return fuelType;
     }
 
     @Override
@@ -51,7 +53,7 @@ public class SteamEngine implements Engine {
     }
 
     @Override
-    public FuelType getRequiredFuelType() {
+    public List<FuelType> getRequiredFuelType() {
         return requiredFuelType;
     }
 }

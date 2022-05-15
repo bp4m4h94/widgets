@@ -3,15 +3,18 @@ package com.worldline.interview.machine;
 import com.worldline.interview.engine.Engine;
 import com.worldline.interview.engine.InternalCombustionEngine;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public class WidgetMachineInternal extends WidgetMachine {
 
     public WidgetMachineInternal(InternalCombustionEngine engine) {
         super(engine);
     }
 
-    public double produceWidgets(int quantity) {
+    public BigDecimal produceWidgets(int quantity) {
         engine.start();
-        double cost = 0;
+        BigDecimal cost = new BigDecimal(0);
 
         if (engine.isRunning()) {
             cost = produce(quantity);
@@ -22,7 +25,7 @@ public class WidgetMachineInternal extends WidgetMachine {
         return cost;
     }
 
-    private double produce(int quantity) {
+    private BigDecimal produce(int quantity) {
         int batch = 0;
         int batchCount = 0;
 
@@ -31,7 +34,10 @@ public class WidgetMachineInternal extends WidgetMachine {
             batchCount++;
         }
 
-        return batchCount * engine.getFuelType().getCostPerBatch();
+        BigDecimal costPerBatch = BigDecimal.valueOf(engine.getFuelType().getCostPerBatch())
+                .setScale(3, RoundingMode.HALF_DOWN);
+
+        return costPerBatch.multiply(new BigDecimal(batchCount)).stripTrailingZeros();
     }
 
     public Engine getEngine() {

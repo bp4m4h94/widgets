@@ -4,6 +4,8 @@ import com.worldline.interview.engine.Engine;
 import com.worldline.interview.engine.InternalCombustionEngine;
 import com.worldline.interview.engine.SteamEngine;
 
+import java.math.BigDecimal;
+
 public abstract class WidgetMachine {
     protected Engine engine;
 
@@ -15,12 +17,12 @@ public abstract class WidgetMachine {
         this.engine = engine;
     }
 
-    public double produceWidgets(int quantity) {
-        return 0;
+    public BigDecimal produceWidgets(int quantity) {
+        return null;
     }
 
-    private double produce(int quantity) {
-        return 0;
+    private BigDecimal produce(int quantity) {
+        return null;
     }
 
     public Engine getEngine() {
